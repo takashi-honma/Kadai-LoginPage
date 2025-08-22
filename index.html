@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ログインページ</title>
+    <title>ログイン</title>
     <meta name="description" content="">
     <link rel="stylesheet" href="./assets/css/sanitize.css">
     <link rel="stylesheet" href="./assets/css/style.css">
@@ -14,5 +14,44 @@
 </head>
 
 <body>
+    <div class="box">
+        <section class="section">
+            <h1>ログイン</h1>
+        </section>
+
+        <section class="section">
+            <h2>IDとパスワードを入力してください</h2>
+        </section>
+
+        <form class="form" action="">
+            <table class="form-table">
+                <tr>
+                    <th>
+                        <label for="id">
+                            ユーザーID
+                        </label>
+                    </th>
+                    <td>
+                        <input class="input" type="text" id="id">
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <label for="passWord">
+                            パスワード
+                        </label>
+                    </th>
+                    <td>
+                        <input class="input" type="password" id="passWord">
+                    </td>
+                </tr>
+            </table>
+        </form>
+
+        <section class="section">
+            <button class="button" id="button">送信</button>
+        </section>
+    </div>
+
 
 </body>
