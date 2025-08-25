@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ログイン</title>
+    <meta name="description" content="">
+    <link rel="stylesheet" href="./assets/css/sanitize.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="box">
+        <section class="section">
+            <h1>ログイン</h1>
+        </section>
+
+        <section class="section">
+            <h2 class="text" id="text">IDとパスワードを入力してください</h2>
+        </section>
+
+        <form class="form" action="">
+            <table class="form-table">
+                <tr>
+                    <th>
+                        <label class="form-headline" for="userId">
+                            ユーザーID
+                        </label>
+                    </th>
+                    <td>
+                        <input class="input" type="text" id="userId">
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <label class="form-headline" for="password">
+                            パスワード
+                        </label>
+                    </th>
+                    <td>
+                        <input class="input" type="password" id="password">
+                    </td>
+                </tr>
+            </table>
+        </form>
+
+        <section class="section">
+            <button class="button" id="button">送信</button>
+        </section>
+    </div>
+
+    <section class="section hidden" id="loadingSection">
+        <div class="loading">
+            <div class="loading-circle"></div>
+        </div>
+    </section>
+
+    <script src="./assets/js/app.js"></script>
+</body>
+
+</html>
