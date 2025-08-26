@@ -12,11 +12,11 @@ HTML,CSSおよびJavaScript,PostgreSQLを使用しています。
 `yarn install`
 
 ③PostgreSQLにてデータベースを作成し、以下のクエリを実行し、テーブルを作成してください。その後、作成したテーブルに任意にusernameとpasswordを追加してください。
-`CREATE TABLE users (
+```CREATE TABLE users (
   id SERIAL PRIMARY KEY,
   username TEXT UNIQUE NOT NULL,
   password TEXT NOT NULL
-); `
+); ```
 
 ④『②』を実行したディレクトリと同じディレクトリ内で以下のコードを実行してください。
 `npm start`
