@@ -8,6 +8,7 @@ HTML,CSSおよびJavaScript,PostgreSQLを使用しています。
 ①このGithubからリポジトリをクローンし、展開してください。
 
 ②コマンドプロンプト等からクローンしたリポジトリに移動し、ルートディレクトリで以下のコードのいずれかを実行してください。
+
 `npm install`
 `yarn install`
 
