@@ -21,7 +21,7 @@ CREATE TABLE users (
 );
 ```
 
-④作成したデータベースのデータを元に、.envファイルを作成してください。書き方は.env.exampleファイルまたは、以下を参考にしてください。
+④作成したデータベースのデータを元に、.envファイルを作成・設定してください。書き方は.env.exampleファイルまたは、以下を参考にしてください。
 ```
 PGHOST=postgresqlのホスト
 PGPORT=postgresqlのポート
