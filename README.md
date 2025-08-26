@@ -16,7 +16,7 @@ HTML,CSSおよびJavaScript,PostgreSQLを使用しています。
   id SERIAL PRIMARY KEY,
   username TEXT UNIQUE NOT NULL,
   password TEXT NOT NULL
-);```
+); ```
 
 ④『②』を実行したディレクトリと同じディレクトリ内で以下のコードを実行してください。
 `npm start`
