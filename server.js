@@ -1,9 +1,9 @@
-require('dotenv').config();
+import 'dotenv/config';
+import express from 'express';
+import { Client } from 'pg';
 
-const express = require('express');
 const app = express();
 
-const { Client } = require('pg');
 const client = new Client({
     host: process.env.PGHOST,
     port: process.env.PGPORT,
@@ -13,8 +13,8 @@ const client = new Client({
 });
 
 client.connect()
-    .then(() => console.log('PostgreSQLに接続成功！'))
-    .catch(err => console.error('接続失敗:', err));
+    .then(() => console.log('PostgreSQL Message:接続成功'))
+    .catch(err => console.error('PostgreSQL Error Message:接続失敗:', err));
 
 app.use(express.static('public'));
 app.use(express.json());
