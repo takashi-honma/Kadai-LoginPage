@@ -8,16 +8,16 @@ form.addEventListener("submit", function (event) {
 });
 
 function sendFetchApi() {
-    loadingSection.classList.remove("hidden");
-
     const userId = document.querySelector('#userId')?.value || '';
     const password = document.querySelector('#password')?.value || '';
 
     if(userId === '' || password === ''){
-        text.classList.remove("miss");
+        text.classList.add("miss");
         text.textContent = "ユーザー名かパスワードが未入力です！";
         return;
     }
+
+    loadingSection.classList.remove("hidden");
 
     fetch('/api/send', {
         method: 'POST',
