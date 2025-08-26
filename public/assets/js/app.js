@@ -1,8 +1,11 @@
 const text = document.getElementById("text");
-const button = document.getElementById("button");
+const form = document.querySelector(".form");
 const loadingSection = document.getElementById("loadingSection");
 
-button.addEventListener("click", sendFetchApi);
+form.addEventListener("submit", function (event) {
+  event.preventDefault();
+  sendFetchApi();
+});
 
 function sendFetchApi() {
     loadingSection.classList.remove("hidden");
@@ -10,7 +13,13 @@ function sendFetchApi() {
     const userId = document.querySelector('#userId')?.value || '';
     const password = document.querySelector('#password')?.value || '';
 
-    fetch('http://localhost:3000/api/send', {
+    if(userId === '' || password === ''){
+        text.classList.remove("miss");
+        text.textContent = "ユーザー名かパスワードが未入力です！";
+        return;
+    }
+
+    fetch('/api/send', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -22,6 +31,7 @@ function sendFetchApi() {
             const { success, message } = result;
 
             if(success === true){
+                text.classList.remove("miss");
                 text.textContent = message;
             }else{
                 text.textContent = message;

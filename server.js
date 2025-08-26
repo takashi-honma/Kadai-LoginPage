@@ -25,15 +25,15 @@ app.post('/api/send', (req, res) => {
     client.query('SELECT 1 FROM users WHERE username = $1 AND password = $2', [userId, password])
         .then(sqlRes => {
             if (sqlRes.rows.length  > 0) {
-                return res.json({ "success": true, "message": "ログイン成功" });
+                return res.status(200).json({ "success": true, "message": "ログイン成功" });
             }else{
-                return res.json({ "success": false, "message": "ユーザーIDまたはパスワードが正しくありません" });
+                return res.status(401).json({ "success": false, "message": "ユーザーIDまたはパスワードが正しくありません" });
             }
 
         })
         .catch(err => {
             console.error('クエリエラー:', err);
-            return res.json({ "success": false, "message": "データベース接続でエラーが発生しました！" });
+            return res.status(500).json({ "success": false, "message": "データベース接続でエラーが発生しました！" });
         });
 });
 

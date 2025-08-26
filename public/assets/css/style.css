@@ -1,5 +1,14 @@
 @charset "utf-8";
 
+:root{
+    --color-back: #eeeeee;
+    --color-front: #ffffff;
+    --color-black: #333333;
+    --color-miss: #b10000;
+    --color-button: #0088ff;
+    --color-load: #000000aa;
+}
+
 /*
 base
 */
@@ -7,8 +16,8 @@ body {
     font-family: "Noto Sans JP", "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
     font-size: 15px;
     line-height: 1.5;
-    color: #333;
-    background-color: #eee;
+    color: var(--color-black);
+    background-color: var(--color-back);
 }
 
 .button,
@@ -20,7 +29,7 @@ body {
 box
 */
 .box {
-    background-color: #ffffff;
+    background-color: var(--color-front);
     padding: 0px 100px 30px 100px;
     border-radius: 10px;
     position: fixed;
@@ -28,7 +37,7 @@ box
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 101;
-    box-shadow: 5px 5px 5px #333;
+    box-shadow: 5px 5px 5px var(--color-black);
 }
 
 /*
@@ -43,8 +52,8 @@ section
 /*
 text
 */
-.miss{
-    color: #b10000;
+.miss {
+    color: var(--color-miss);
     font-size: 18px;
 }
 
@@ -82,9 +91,9 @@ button
 */
 .button {
     display: inline-block;
-    color: #fff;
+    color: var(--color-front);
     font-weight: bold;
-    background-color: #0088ff;
+    background-color: var(--color-button);
     text-align: center;
     padding: 15px 60px;
     margin-top: 20px;
@@ -96,23 +105,24 @@ button
 /*
 loading
 */
-.loading{
+.loading {
     display: flex;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #000000aa;
+    background-color: var(--color-load);
     z-index: 1000;
     animation: fadeIn 0.3s ease forwards;
 }
+
 .loading-circle {
-    border: 12px solid #ffffff;
+    border: 12px solid var(--color-front);
     border-radius: 50%;
     width: 100px;
     height: 100px;
-    border-top: 12px solid #0088ff;
+    border-top: 12px solid var(--color-button);
     animation: spin 1s linear infinite;
     position: fixed;
     top: 40%;
@@ -120,14 +130,14 @@ loading
     transform: translate(-50%, -50%);
 }
 
-@keyframes spin{
-  0%{
-    transform: rotate(0deg);
-  }
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
 
-  100%{
-    transform: rotate(360deg);
-  }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 @keyframes fadeIn {
