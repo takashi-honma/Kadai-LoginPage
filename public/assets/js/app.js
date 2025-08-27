@@ -3,15 +3,15 @@ const form = document.querySelector(".form");
 const loadingSection = document.getElementById("loadingSection");
 
 form.addEventListener("submit", function (event) {
-  event.preventDefault();
-  sendFetchApi();
+    event.preventDefault();
+    sendFetchApi();
 });
 
 function sendFetchApi() {
     const userId = document.querySelector('#userId')?.value || '';
     const password = document.querySelector('#password')?.value || '';
 
-    if(userId === '' || password === ''){
+    if (userId === '' || password === '') {
         text.classList.add("miss");
         text.textContent = "ユーザー名かパスワードが未入力です！";
         return;
@@ -30,10 +30,10 @@ function sendFetchApi() {
         .then(result => {
             const { success, message } = result;
 
-            if(success === true){
+            if (success === true) {
                 text.classList.remove("miss");
                 text.textContent = message;
-            }else{
+            } else {
                 text.textContent = message;
                 text.classList.add("miss");
             }
