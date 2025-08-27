@@ -4,10 +4,10 @@ const loadingSection = document.getElementById("loadingSection");
 
 form.addEventListener("submit", function (event) {
     event.preventDefault();
-    sendFetchApi();
+    LoginRequest();
 });
 
-function sendFetchApi() {
+function LoginRequest() {
     const userId = document.querySelector('#userId')?.value || '';
     const password = document.querySelector('#password')?.value || '';
 

@@ -12,9 +12,16 @@ const client = new Client({
     database: process.env.PGDATABASE
 });
 
-client.connect()
-    .then(() => console.log('PostgreSQL Message:接続成功'))
-    .catch(err => console.error('PostgreSQL Error Message:接続失敗:', err));
+(
+    async () => {
+        try {
+            await client.connect()
+            console.log('PostgreSQL Message:接続成功')
+        } catch (err) {
+            console.error('PostgreSQL Error Message:接続失敗:', err)
+        }
+    }
+)();
 
 app.use(express.static('public'));
 app.use(express.json());
@@ -24,9 +31,9 @@ app.post('/api/send', (req, res) => {
 
     client.query('SELECT 1 FROM users WHERE username = $1 AND password = $2', [userId, password])
         .then(sqlRes => {
-            if (sqlRes.rows.length  > 0) {
+            if (sqlRes.rows.length > 0) {
                 return res.status(200).json({ "success": true, "message": "ログイン成功" });
-            }else{
+            } else {
                 return res.status(401).json({ "success": false, "message": "ユーザーIDまたはパスワードが正しくありません" });
             }
 

@@ -9,29 +9,59 @@ const client = new Client({
     database: process.env.PGDATABASE
 });
 
-client.connect()
-    .then(() => {
-        console.log('PostgreSQL Detabaseの初期化を実行します…');
+async function databaseInit() {
+    try {
+        await ClientConnection();
 
-        client.query('CREATE TABLE IF NOT EXISTS users (id SERIAL PRIMARY KEY,username TEXT UNIQUE NOT NULL, password TEXT NOT NULL);')
-            .then(createRes => {
-                console.log('データベースの作成に成功しました！');
-                client.query("INSERT INTO users (username, password) VALUES ('username_test', 'password_test');")
-                    .then(userRes => {
-                        console.log('テストユーザーの登録に成功しました！');
-                        return;
-                    })
-                    .catch(err => {
-                        console.error('クエリエラー:テストユーザー登録に失敗しました。', err);
-                        return;
-                    });
-            })
-            .catch(err => {
-                console.error('クエリエラー:データベースの作成に失敗しました。', err);
-                return;
-            });
-    })
-    .catch(err => {
-        console.error('PostgreSQL Error Message:接続失敗:', err);
-        return;
-    });
+        await createDB();
+
+        await createDummyUser();
+
+        console.log('データベースの初期設定に成功しました！');
+
+    } catch (err) {
+        console.error('データベースの初期設定に失敗しました。');
+
+    } finally {
+        client.end();
+    }
+}
+
+async function ClientConnection() {
+    try {
+
+        await client.connect();
+
+    } catch (err) {
+
+        console.error('接続エラー:データベース接続でエラーが発生しました。', err);
+        throw err;
+    }
+}
+
+async function createDB() {
+    try {
+
+        await client.query('CREATE TABLE IF NOT EXISTS users (id SERIAL PRIMARY KEY,username TEXT UNIQUE NOT NULL, password TEXT NOT NULL);');
+
+    } catch (err) {
+
+        console.error('クエリエラー:データベース作成でエラーが発生しました。', err);
+        throw err;
+    }
+}
+
+async function createDummyUser() {
+    try {
+
+        await client.query("INSERT INTO users (username, password) VALUES ('username_test', 'password_test');")
+
+    } catch (err) {
+
+        console.error('クエリエラー:ダミーユーザーの作成でエラーが発生しました。', err);
+        throw err;
+    }
+
+}
+
+databaseInit();
