@@ -37,7 +37,6 @@ app.post('/api/send', (req, res) => {
             } else {
                 return res.status(401).json({ "success": false, "message": "ユーザーIDまたはパスワードが正しくありません" });
             }
-
         })
         .catch(err => {
             console.error('データベースエラー:', err);
