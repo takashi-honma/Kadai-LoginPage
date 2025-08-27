@@ -12,6 +12,7 @@ const client = new Client({
     database: process.env.PGDATABASE
 });
 
+//はじめに一回だけ、接続処理を行う。
 (
     async () => {
         try {
@@ -39,7 +40,7 @@ app.post('/api/send', (req, res) => {
 
         })
         .catch(err => {
-            console.error('クエリエラー:', err);
+            console.error('データベースエラー:', err);
             return res.status(500).json({ "success": false, "message": "データベース接続でエラーが発生しました！" });
         });
 });

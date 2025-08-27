@@ -11,6 +11,7 @@ function LoginRequest() {
     const userId = document.querySelector('#userId')?.value || '';
     const password = document.querySelector('#password')?.value || '';
 
+    //未入力をはじく処理。
     if (userId === '' || password === '') {
         text.classList.add("miss");
         text.textContent = "ユーザー名かパスワードが未入力です！";
